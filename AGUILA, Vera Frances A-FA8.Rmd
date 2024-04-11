@@ -1,0 +1,107 @@
+---
+title: "Formative Assessment 8"
+author: "Vera Aguila"
+date: "2024-04-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 1
+
+An analogue signal received at a detector, measured in microvolts, is normally
+distributed with mean of 200 and variance of 256.
+
+that is, X ∼ N(200, 16).
+
+(a) What is the probability that the signal will exceed 224 𝜇V?
+
+P(X > 224)
+
+```{r 1.a}
+1-pnorm(224,200,16)
+
+curve(dnorm(x, 200, 16), 240, 160, xlab = "x", ylab = "f(x)")
+x <- seq(224, 240, 0.01) #values of x in the range 40–50 in intervals of 0.01
+lines (x, dnorm(x, mean = 200, sd = 16), type = "h",
+col = "grey") #shading
+```
+
+(b) What is the probability that it will be between 186 and 224 𝜇V?
+
+P(X < 224|X > 186) = $\frac{P((X<224)∩(X>186))}{P((X>186)}$ = $\frac{P(186 < X< 224)}{P(X>186)}$
+
+P(186 < X< 224)=
+```{r 1.b.1}
+a -> pnorm(224,200,16)-pnorm(186,200,16)
+a
+```
+
+P(X>186) = 
+```{r 1.b.2}
+b -> 1-pnorm(186,200,16)
+b
+```
+
+$\frac{P(186 < X< 224)}{P(X>186)}$ = 
+
+```{r 1.b.3}
+c -> a/b
+c
+curve(dnorm(x, 200, 16), 240, 160, xlab = "x", ylab = "f(x)")
+x <- seq(186, 224, 0.01) #values of x in the range 40–50 in intervals of 0.01
+lines (x, dnorm(x, mean = 200, sd = 16), type = "h",
+col = "grey") #shading
+```
+
+(c) What is the micro voltage below which 25% of the signals will be?
+
+(d) What is the probability that the signal will be less than 240 𝜇V, given that it is larger than 210 𝜇V?
+
+P(X < 240|X > 210)
+```{r 1.d}
+pnorm(240,200,16)-pnorm(210,200,16)
+
+curve(dnorm(x, 200, 16), 260, 140, xlab = "x", ylab = "f(x)")
+x <- seq(210, 240, 0.01) #values of x in the range 40–50 in intervals of 0.01
+lines (x, dnorm(x, mean = 200, sd = 16), type = "h",
+col = "grey") #shading
+```
+
+(e) Estimate the interquartile range.
+
+(f) What is the probability that the signal will be less than 220 𝜇V, given that
+it is larger than 210 𝜇V?
+
+P(X < 220|X > 210)
+
+```{r 1.d}
+pnorm(220,200,16)-pnorm(210,200,16)
+
+curve(dnorm(x, 200, 16), 240, 160, xlab = "x", ylab = "f(x)")
+x <- seq(210, 220, 0.01) #values of x in the range 40–50 in intervals of 0.01
+lines (x, dnorm(x, mean = 200, sd = 16), type = "h",
+col = "grey") #shading
+```
+
+(g) If we know that a received signal is greater that 200 𝜇V, what is the probability that is in fact greater than 220 𝜇V?
+
+```{r cars}
+summary(cars)
+```
+
+## Question 2
+
+A manufacturer of a particular type of computer system is interested in improving its customer support services. As a first step, its marketing department has
+been charged with the responsibility of summarizing the extent of customer
+problems in terms of system failures. Over a period of six months, customers
+were surveyed and the amount of downtime (in minutes) due to system failures
+they had experienced during the previous month was collected. The average
+downtime was found to be 25 minutes and a variance of 144. If it can be
+assumed that downtime is normally distributed:
+
+(a) obtain bounds which will include 95% of the downtime of all the customers;
+
+(b) obtain the bound above which 10% of the downtime is included.
