@@ -35,20 +35,20 @@ P(X < 224|X > 186) = $\frac{P((X<224)∩(X>186))}{P((X>186)}$ = $\frac{P(186 < X
 
 P(186 < X< 224)=
 ```{r 1.b.1}
-a -> pnorm(224,200,16)-pnorm(186,200,16)
+a <- pnorm(224,200,16)-pnorm(186,200,16)
 a
 ```
 
 P(X>186) = 
 ```{r 1.b.2}
-b -> 1-pnorm(186,200,16)
+b <- 1-pnorm(186,200,16)
 b
 ```
 
 $\frac{P(186 < X< 224)}{P(X>186)}$ = 
 
 ```{r 1.b.3}
-c -> a/b
+c <- a/b
 c
 curve(dnorm(x, 200, 16), 240, 160, xlab = "x", ylab = "f(x)")
 x <- seq(186, 224, 0.01) #values of x in the range 40–50 in intervals of 0.01
@@ -77,7 +77,7 @@ it is larger than 210 𝜇V?
 
 P(X < 220|X > 210)
 
-```{r 1.d}
+```{r 1.f}
 pnorm(220,200,16)-pnorm(210,200,16)
 
 curve(dnorm(x, 200, 16), 240, 160, xlab = "x", ylab = "f(x)")
